@@ -66,10 +66,10 @@ public class RockPaperScissors {
     }
 
     /**
-     * Creates the main scene for the guessing game.
+     * Creates the main scene for the game.
      * 
      * @param layout the layout of the scene
-     * @return the main scene for the guessing game
+     * @return the main scene for the game
      */
     public Scene createMainScene(VBox layout) {
         Scene tempScene = new Scene(layout, width, height);
