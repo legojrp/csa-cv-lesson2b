@@ -10,6 +10,14 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.scene.Scene;
+
+
+
 public class RockPaperScissors {
     
     /** The primary stage of the game */
@@ -30,6 +38,10 @@ public class RockPaperScissors {
     /** The logic for playing the game */
     private GameLogic logic;
 
+    private Player player;
+
+    private Label scoreLabel;
+
     public RockPaperScissors(Stage primaryStage, int width, int height) {
         this.window = primaryStage;
         window.setTitle("Rock, Paper, Scissors");
@@ -40,6 +52,8 @@ public class RockPaperScissors {
         promptLabel = new Label("Make a choice");
         computerChoiceLabel = new Label("");
         logic = new GameLogic(); 
+
+        this.scoreLabel = new Label();
     }
     
     /**
@@ -90,6 +104,7 @@ public class RockPaperScissors {
 
         tempLayout.getChildren().addAll(promptLabel, computerChoiceLabel);
         tempLayout.getChildren().addAll(buttonsList);
+        tempLayout.getChildren().add(scoreLabel);
 
         return tempLayout;
     }
@@ -147,6 +162,8 @@ public class RockPaperScissors {
         computerChoiceLabel.setText(computerResult);
         
         String userResult = logic.play();
+        boolean playerWon = userResult.contains("win"); // Modify this line as needed
+        updatePlayerScore(playerWon);
         promptLabel.setText(userResult);
     }
 
@@ -159,6 +176,33 @@ public class RockPaperScissors {
         logic.setComputerChoice();
         promptLabel.setText("Make a choice");
         computerChoiceLabel.setText("");
+    }
+
+    public void updatePlayerScore(boolean playerWon) {
+        if (playerWon) {
+            player.incrementScore();
+        }
+        scoreLabel.setText("Score: " + player.getScore());
+    }
+
+    public Scene createNamePromptScene() {
+        VBox layout = new VBox();
+        Label promptLabel = new Label("Enter your name:");
+        TextField nameField = new TextField();
+        Button startButton = new Button("Start Game");
+
+        startButton.setOnAction(e -> {
+            String playerName = nameField.getText();
+            this.player = new Player(playerName);
+            VBox gameLayout = createLayout();
+            Scene gameScene = createMainScene(gameLayout);
+            setSceneAndShow(gameScene);
+        });
+
+        layout.getChildren().addAll(promptLabel, nameField, startButton);
+
+        Scene scene = new Scene(layout, width, height);
+        return scene;
     }
 
 }

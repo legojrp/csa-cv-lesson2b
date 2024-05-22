@@ -35,7 +35,8 @@ This game allows users to compete against the computer in the classic Rock, Pape
 ## Possible Enhancements
 
 * **Score Tracking:** Add a feature to track the player's and computer's scores over multiple rounds.
-* **Sounds:** Add sound effects for winning, losing, or tying a round.
-* **Extended Version:** Introduce variants of the game, like Rock, Paper, Scissors, Lizard, Spock.
-* **Player Profiles:** Allow players to create profiles with avatars, names, and track their all-time win/loss ratios.
+* **Sounds:** Add sound effects for winning, losing, or tying a round.  -- x
+* **Extended Version:** Introduce variants of the game, like Rock, Paper, Scissors, Lizard, Spock. 
+
+* **Player Profiles:** Allow players to create profiles with avatars, names, and track their all-time win/loss ratios. --
 * **Multiplayer Mode:** Allow two players to play against each other on the same machine.
